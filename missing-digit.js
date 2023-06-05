@@ -15,26 +15,20 @@ const MapFinalX = {
   '*': (a, b) => a * b,
   '/': (a, b) => a / b,
 }
-
-
 const MapHasX = {
   '+': (a, b) => a - b,
   '-': (a, b) => a + b,
   '*': (a, b) => a / b,
   '/': (a, b) => a * b,
 }
-
 function MissingDigit(str) {
   //check if more than one x exists
   const numberOfX = str.split(" ").filter(s => s.includes('x'));
   if (numberOfX && numberOfX.length >= 2) {
     throw new Error("Operation not supported");
   }
-
   const split = str.split("=");
-
   const answer = split[split.length - 1].trim();
-
   const leftSplit = split[0].split(" ");
   if (answer == 'x' && split.length > 1) {
     //get the operand from first item in split
@@ -48,13 +42,10 @@ function MissingDigit(str) {
         if (isNaN(a)) return -1;
         return 0;
       });
-      console.log(leftSplitExclIndexWithX);
       return MapHasX[leftSplitExclIndexWithX[0]](answer, leftSplitExclIndexWithX[1]);
     }
   }
-
   return null;
-
 }
 
 const result = MissingDigit("1x0 * 12 = 1200");
